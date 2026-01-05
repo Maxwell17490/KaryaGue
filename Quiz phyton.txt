@@ -1,0 +1,87 @@
+Yohanes A Deo 
+1. phyton adalah salah satu Bahasa yang dipakai di pemrograman. Seperti Java, Phyton, C++, dll. Tetapi setiap jenis Bahasa ini dapat digunakan untuk banyak hal karena phyton tidak dapat menjawab semua jenis kode atau perintah yang dberikan oleh pemakai.
+
+2. if adalah function/program yang digunakan pada jenis data Boolean atau if atau true. Contoh :
+A = 11
+If (A==11):
+	print ("Benar")
+else :
+print ("salah")
+
+3 Perbedaan for loop dengan while loop 
+For loop digunakan untuk mengulang tetapi untuk start dan finishnya program tersebut telahh ditentukan. Sedangkan while loop memiliki beberapa kondisi untuk melakukan pengulangan.
+
+4. luas = panjang(a)*lebar(b)
+c : luas
+
+5. Output dan input :
+a. n = 6 maka inputnya akan 
+1. "Angka genap"  
+2. "Angka kelipatan tiga"
+
+b. n = 15 maka outputnya akan seperti
+1. "Angka lebih besar dari 10"
+2. "Angka kelipatan 3"
+3. "Angka kelipatan 5"
+
+c. n = -10
+1. "Angka negatif"
+2. "Angka kelipatan 5"
+3. "Angka genap"
+
+d. n = 9
+1. "Angka kelipatan tiga"
+
+e. n = 12
+1. "Angka genap"
+2. "Angka lebih besar dari 10
+3. "Anga kelipatan tiga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6. List adalah salah satu fungsi atau program yang dimulai dengan variable.
+2. List berisikan banyak data yang ber index daro 0.
+Contoh :
+A = [2, 3, 4, 5]
+- A itu sebagai variable.
+- 2, 3, 4, 5 adalah data yang berada di dalam list. Indexnya
+2 = 0
+3 = 1
+4 = 2
+5 = 3
+
+Function yang ada pada list :
+1. Append : untuk menambahkan data
+2. Remove  untuk menghapus data yang kita mau.
+3. pop : Untuk menghapus data dengan index seperti [0]
+4. insert : menambahkan data
