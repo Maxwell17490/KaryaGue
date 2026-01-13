@@ -535,9 +535,10 @@
         likeCount: likedBy.length
       });
       const likeElem = document.getElementById(`like-${karyaId}`);
-      if (likeElem) {
-         likeElem.textContent = `❤️ ${likedBy.length} Like`;
-      }
+    if (likeElem) {
+	   const emoji = hasLiked ? "❤️" : "💔";
+       likeElem.textContent = `${emoji} ${likedBy.length} Like`;
+	}
       // Update cache
       window.karyaData = window.karyaData.map(k =>
         k.id === karyaId ? { ...k, likedBy, likeCount: likedBy.length } : k
@@ -647,3 +648,4 @@
 </body>
 
 </html>
+
