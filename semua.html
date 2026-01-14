@@ -500,41 +500,40 @@
   }
 
   // Toggle Like (tetap sama)
-  async function toggleLike(karyaId) {
-    const karyaRef = db.collection("karya").doc(karyaId);
-    const doc = await karyaRef.get();
-    if (!doc.exists) return;
+ async function toggleLike(karyaId) {
+  const karyaRef = db.collection("karya").doc(karyaId);
+  const doc = await karyaRef.get();
+  if (!doc.exists) return;
 
-    const data = doc.data();
-    let likedBy = data.likedBy || [];
-    const hasLiked = likedBy.includes(userId);
+  const data = doc.data();
+  let likedBy = data.likedBy || [];
+  const currentlyLiked = likedBy.includes(userId);
 
-    // Toggle like/unlike
-    if (hasLiked) {
-        likedBy = likedBy.filter(id => id !== userId);
-    } else {
-        likedBy.push(userId);
-    }
+  if (currentlyLiked) {
+    likedBy = likedBy.filter(id => id !== userId);
+  } else {
+    likedBy.push(userId);
+  }
 
-    // Update ke firestore
-    await karyaRef.update({
-        likedBy,
-        likeCount: likedBy.length
-    });
+  const newCount = likedBy.length;
 
-    // Update tampilan tombol
-    const likeElem = document.getElementById(`like-${karyaId}`);
-    if (likeElem) {
-        const emoji = hasLiked ? "♡" : "❤️";   // kalau tadi sudah like → jadi ♡ (kosong)
-        // Alternatif emoji: "💔" atau "🤍" untuk kondisi belum like
-        likeElem.textContent = `${emoji} ${likedBy.length}`;
-    }
+  await karyaRef.update({
+    likedBy,
+    likeCount: newCount
+  });
 
-    // Update data lokal (jika pakai state/window.karyaData)
-    window.karyaData = window.karyaData.map(k =>
-        k.id === karyaId ? { ...k, likedBy, likeCount: likedBy.length } : k
-    );
-      }
+  const likeElem = document.getElementById(`like-${karyaId}`);
+  if (likeElem) {
+    const emoji = currentlyLiked ? "💔" : "❤️";  // toggle emoji
+    likeElem.innerHTML = `${emoji} ${newCount}`;
+    likeElem.classList.toggle("liked", !currentlyLiked);  // toggle class styling
+  }
+
+  // Update cache lokal (opsional tapi penting agar konsisten)
+  window.karyaData = window.karyaData.map(k =>
+    k.id === karyaId ? { ...k, likedBy, likeCount: newCount } : k
+  );
+}
 
   // Submit Comment (tetap sama)
   async function submitComment(e, karyaId) {
@@ -630,6 +629,7 @@
 </script>
 </body>
 </html>
+
 
 
 
