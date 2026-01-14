@@ -26,13 +26,241 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
+      z-index: 100;
+    }
+    header .logo img {
+      height: 50px;
+    }
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header nav a {
+      text-decoration: none;
+      color: #F5E8C7;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    header nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
       left: 0;
-      right: 0;
-      z-index: 1000;
+      width: 0;
+      height: 2px;
+      background: #C68E17;
+      transition: width 0.3s ease;
+    }
+    header nav a:hover::after {
       width: 100%;
-      box-sizing: border-box;
+    }
+    header nav a:hover {
+      color: #C68E17;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.5s;
+    }
+    .dropbtn {
+      background: linear-gradient(135deg, #D4A373, #C68E17);
+      color: #F5E8C7;
+      padding: 10px 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .dropbtn:hover {
+      background: linear-gradient(135deg, #C68E17, #D4A373);
+      transform: translateY(-2px);
+    }
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #F5E8C7;
+      transition: transform 0.3s ease;
+    }
+    .dropdown:hover .arrow {
+      transform: rotate(180deg);
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #F5E8C7;
+      min-width: 160px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      margin-top: 4px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .dropdown-content a {
+      color: #8A5A44;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+      border-radius: 6px;
+      margin: 4px;
+    }
+    .dropdown-content a:hover {
+      background-color: #E8D8C6;
+    }
+    .dropdown-content a.active {
+      background: #D4A373;
+      color: #F5E8C7;
+      font-weight: bold;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0 10px;
+      color: #8A5A44;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.3s;
     }
 
+    h2 {
+      text-align: center;
+      animation: fadeIn 1s ease forwards 0.3s;
+    }
+    p {
+      text-align: center;
+      color: #8A5A44;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.6s;
+    }
+
+    /* Upload form */
+    #uploadToggle {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #D4A373, #C68E17);
+      color: #F5E8C7;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.9s;
+    }
+    #uploadToggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    #upload {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0;
+      background: #F5E8C7;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
+    }
+    #upload.active {
+      padding: 20px;
+      max-height: 1000px;
+      opacity: 1;
+    }
+    #upload h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #8A5A44;
+    }
+    #upload input,
+    #upload textarea,
+    #upload select {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #E8D8C6;
+      background: #F5E8C7;
+      color: #8A5A44;
+      transition: border-color 0.3s;
+    }
+    #upload input:focus,
+    #upload textarea:focus,
+    #upload select:focus {
+      outline: none;
+      border-color: #C68E17;
+    }
+    #upload button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #D4A373;
+      color: #F5E8C7;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    #upload button:hover {
+      background: #C68E17;
+      transform: translateY(-2px);
+    }
+
+    /* Form komentar */
+    .form-comment {
+      margin-top: 10px;
+    }
+    .form-comment input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      border: 1px solid #E8D8C6;
+      border-radius: 6px;
+      font-size: 0.9em;
+      box-sizing: border-box;
+      background: #F5E8C7;
+      color: #8A5A44;
+      transition: border-color 0.3s;
+    }
+    .form-comment input[type="text"]:focus {
+      outline: none;
+      border-color: #C68E17;
+    }
+    .form-comment button {
+      background: #D4A373;
+      color: #F5E8C7;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .form-comment button:hover {
+      background: #C68E17;
+      transform: translateY(-2px);
+    }
     .gallery-section {
       margin: 40px auto;
       max-width: 1400px;
@@ -431,3 +659,4 @@ body > div[role="main"] > h1:first-child {
   </script>
 </body>
 </html>
+
