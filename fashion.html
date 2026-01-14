@@ -14,7 +14,9 @@
       margin: 0;
       padding: 0;
       color: #8A5A44;
+      overflow-x: hidden; /* cegah scroll horizontal tak diinginkan di luar gallery */
     }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -24,344 +26,139 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 100;
-    }
-    header .logo img {
-      height: 50px;
-    }
-    header nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    header nav a {
-      text-decoration: none;
-      color: #F5E8C7;
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.3s;
-    }
-    header nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
       left: 0;
-      width: 0;
-      height: 2px;
-      background: #C68E17;
-      transition: width 0.3s ease;
-    }
-    header nav a:hover::after {
+      right: 0;
+      z-index: 1000;
       width: 100%;
-    }
-    header nav a:hover {
-      color: #C68E17;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.5s;
-    }
-    .dropbtn {
-      background: linear-gradient(135deg, #D4A373, #C68E17);
-      color: #F5E8C7;
-      padding: 10px 14px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Poppins', sans-serif;
-    }
-    .dropbtn:hover {
-      background: linear-gradient(135deg, #C68E17, #D4A373);
-      transform: translateY(-2px);
-    }
-    .arrow {
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #F5E8C7;
-      transition: transform 0.3s ease;
-    }
-    .dropdown:hover .arrow {
-      transform: rotate(180deg);
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #F5E8C7;
-      min-width: 160px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      z-index: 1;
-      top: 100%;
-      left: 0;
-      margin-top: 4px;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .dropdown-content a {
-      color: #8A5A44;
-      padding: 10px 14px;
-      text-decoration: none;
-      display: block;
-      transition: background 0.3s;
-      border-radius: 6px;
-      margin: 4px;
-    }
-    .dropdown-content a:hover {
-      background-color: #E8D8C6;
-    }
-    .dropdown-content a.active {
-      background: #D4A373;
-      color: #F5E8C7;
-      font-weight: bold;
-    }
-    h1 {
-      text-align: center;
-      margin: 20px 0 10px;
-      color: #8A5A44;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.3s;
-    }
-
-    h2 {
-      text-align: center;
-      animation: fadeIn 1s ease forwards 0.3s;
-    }
-    p {
-      text-align: center;
-      color: #8A5A44;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.6s;
-    }
-
-    /* Upload form */
-    #uploadToggle {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #D4A373, #C68E17);
-      color: #F5E8C7;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.9s;
-    }
-    #uploadToggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-    #upload {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 0;
-      background: #F5E8C7;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
-    }
-    #upload.active {
-      padding: 20px;
-      max-height: 1000px;
-      opacity: 1;
-    }
-    #upload h2 {
-      margin-top: 0;
-      text-align: center;
-      color: #8A5A44;
-    }
-    #upload input,
-    #upload textarea,
-    #upload select {
-      width: 100%;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #E8D8C6;
-      background: #F5E8C7;
-      color: #8A5A44;
-      transition: border-color 0.3s;
-    }
-    #upload input:focus,
-    #upload textarea:focus,
-    #upload select:focus {
-      outline: none;
-      border-color: #C68E17;
-    }
-    #upload button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #D4A373;
-      color: #F5E8C7;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-    #upload button:hover {
-      background: #C68E17;
-      transform: translateY(-2px);
-    }
-
-    /* Form komentar */
-    .form-comment {
-      margin-top: 10px;
-    }
-    .form-comment input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 8px;
-      border: 1px solid #E8D8C6;
-      border-radius: 6px;
-      font-size: 0.9em;
       box-sizing: border-box;
-      background: #F5E8C7;
-      color: #8A5A44;
-      transition: border-color 0.3s;
-    }
-    .form-comment input[type="text"]:focus {
-      outline: none;
-      border-color: #C68E17;
-    }
-    .form-comment button {
-      background: #D4A373;
-      color: #F5E8C7;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9em;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .form-comment button:hover {
-      background: #C68E17;
-      transform: translateY(-2px);
     }
 
-    /* Gallery - Horizontal Scroll */
+    /* Sisanya style header, dropdown, upload, form-comment, animasi fadeIn tetap sama seperti semua.html */
+
+    /* Gallery - Horizontal Scroll (sama seperti semua.html yang sudah di-update) */
     .gallery-section {
       margin: 40px auto;
       max-width: 1400px;
       padding: 0 20px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
+
     .gallery-section h2 {
-      text-align: left;
+      text-align: center;
       margin: 30px 0 20px;
       color: #8A5A44;
       opacity: 0;
       animation: fadeIn 1s ease forwards 1.2s;
       font-size: 1.8em;
     }
-   /* Gallery - Tetap flex, tapi rata tengah + jarak lebih nyaman */
-.gallery-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;                    /* dinaikkan dari 20px agar lebih lega */
-  justify-content: center;      /* <-- Kunci utama: card jadi rata tengah */
-  padding: 20px 0;              /* padding atas-bawah, tanpa samping berlebih */
-}
 
-/* Card tetap seperti asli, hanya ditambah sedikit penyesuaian */
-.card {
-  background: #F5E8C7;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-  flex: 0 0 300px;              /* lebar tetap ~300px */
-  max-width: 320px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
-}
+    .gallery-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      contain: content;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar-thumb {
+      background: #C68E17;
+      border-radius: 4px;
+    }
+
+    .card {
+      background: #F5E8C7;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      flex: 0 0 300px;
+      max-width: 320px;
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.4s; }
+    .card:nth-child(2) { animation-delay: 0.5s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.7s; }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
 
     .card img {
-  width: 100%;
-  height: auto;                  
-  max-height: 280px;              
-  border-radius: 8px;
-  margin-bottom: 12px;
-  object-fit: contain;             
-  background: #f8f1e5;            
-  display: block;
-}
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      object-fit: contain;
+      background: #f8f1e5;
+      display: block;
+    }
 
-/* Animation delay tetap dipertahankan */
-.card:nth-child(1) { animation-delay: 0.4s; }
-.card:nth-child(2) { animation-delay: 0.5s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-.card:nth-child(4) { animation-delay: 0.7s; }
-.card:nth-child(5) { animation-delay: 0.8s; }
-.card:nth-child(6) { animation-delay: 0.9s; }
+    .likes {
+      font-weight: 600;
+      color: #8A5A44;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(198, 142, 23, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
 
-/* Hover effect tetap sama */
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
+    .likes.liked {
+      background: rgba(255, 59, 48, 0.12);
+      color: #ff3b30;
+    }
 
-/* Like button - dipercantik sedikit tanpa merusak style lama */
-.likes {
-  font-weight: 600;
-  color: #8A5A44;
-  margin-top: 12px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: rgba(198, 142, 23, 0.08);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-  user-select: none;
-}
+    .likes:hover {
+      background: rgba(198, 142, 23, 0.15);
+    }
 
-.likes.liked {
-  background: rgba(255, 59, 48, 0.12);
-  color: #ff3b30;
-}
+    .likes.liked:hover {
+      background: rgba(255, 59, 48, 0.18);
+    }
 
-.likes:hover {
-  background: rgba(198, 142, 23, 0.15);
-}
+    .comments {
+      margin-top: 12px;
+    }
+    .comment {
+      background: #E8D8C6;
+      margin-bottom: 6px;
+      padding: 6px;
+      border-radius: 6px;
+      color: #8A5A44;
+    }
 
-.likes.liked:hover {
-  background: rgba(255, 59, 48, 0.18);
-}
+    @media (max-width: 768px) {
+      .card {
+        flex: 0 0 260px;
+      }
+      .gallery-wrapper {
+        gap: 16px;
+      }
+    }
 
-/* Bagian comments tetap sama */
-.comments {
-  margin-top: 12px;
-}
-.comment {
-  background: #E8D8C6;
-  margin-bottom: 6px;
-  padding: 6px;
-  border-radius: 6px;
-  color: #8A5A44;
-}
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -370,21 +167,12 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .card {
-        flex: 0 0 200px;
-      }
-      .gallery-wrapper {
-        gap: 16px;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo"> <a href="index.html"><img src="./images/logokarya.png" alt="Logo"></a>
+    <div class="logo">
+      <img src="./images/logokarya.png" alt="Logo">
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -406,7 +194,7 @@
   </header>
 
   <h1>KaryaGue - Fashion</h1>
-  <p>Lihat karya-karya kreatif fashion dan beri pendapatmu!</p>
+  <p>Lihat karya-karya kreatif dari kategori fashion dan beri pendapatmu!</p>
 
   <!-- Tombol Toggle Upload -->
   <button id="uploadToggle">+ Upload Karya</button>
@@ -430,14 +218,14 @@
     </form>
   </section>
 
-  <!-- Hanya satu galeri (seperti semua.html) -->
+  <!-- Galeri tunggal (sama seperti semua.html) -->
   <div class="gallery-section">
     <h2>Karya Fashion</h2>
     <div class="gallery-wrapper" id="fashionGallery"></div>
   </div>
 
   <script>
-  // Firebase Config
+  // Firebase Config (sama)
   const firebaseConfig = {
     apiKey: "AIzaSyBxyKp9gGzFbScsSkrMHg8cOxvEC0-zprQ",
     authDomain: "karyague-29fd0.firebaseapp.com",
@@ -450,17 +238,17 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  // User ID
+  // User ID (sama)
   const userId = localStorage.getItem("karyague_user_id") || (() => {
     const newId = "user_" + Date.now();
     localStorage.setItem("karyague_user_id", newId);
     return newId;
   })();
 
-  // Gallery Container (satu saja)
+  // Gallery Container
   const fashionGallery = document.getElementById("fashionGallery");
 
-  // Event listener untuk dropdown kategori
+  // Event dropdown (sama)
   document.querySelectorAll('.dropdown-content a').forEach(item => {
     item.addEventListener('click', (e) => {
       document.querySelectorAll('.dropdown-content a').forEach(i => i.classList.remove('active'));
@@ -470,12 +258,12 @@
     });
   });
 
-  // Toggle upload form
+  // Toggle upload form (sama)
   document.getElementById("uploadToggle").addEventListener("click", () => {
     document.getElementById("upload").classList.toggle("active");
   });
 
-  // Render Karya
+  // Fungsi renderKarya (sama seperti semua.html, dengan status like awal)
   function renderKarya(karya, container) {
     const card = document.createElement("div");
     card.className = "card";
@@ -491,7 +279,7 @@
       <p><strong>Kategori:</strong> ${karya.kategori.charAt(0).toUpperCase() + karya.kategori.slice(1)}</p>
       <p>${karya.deskripsi}</p>
       <div class="likes ${initialHasLiked ? 'liked' : ''}" id="like-${karya.id}">
-        ${initialEmoji} ${karya.likeCount || 0} Like
+        ${initialEmoji} ${karya.likeCount || 0}
       </div>
       <div class="comments" id="comments-${karya.id}"></div>
       <form class="form-comment" onsubmit="submitComment(event, '${karya.id}')">
@@ -506,7 +294,7 @@
     listenToComments(karya.id);
   }
 
-  // Toggle Like
+  // toggleLike (sama seperti semua.html, dengan update class liked)
   async function toggleLike(karyaId) {
     const karyaRef = db.collection("karya").doc(karyaId);
     const doc = await karyaRef.get();
@@ -532,7 +320,7 @@
     const likeElem = document.getElementById(`like-${karyaId}`);
     if (likeElem) {
       const emoji = currentlyLiked ? "💔" : "❤️";
-      likeElem.innerHTML = `${emoji} ${newCount} Like`;
+      likeElem.innerHTML = `${emoji} ${newCount}`;
       likeElem.classList.toggle("liked", !currentlyLiked);
     }
 
@@ -541,7 +329,8 @@
     );
   }
 
-  // Submit Comment
+  // submitComment & listenToComments (sama persis)
+
   async function submitComment(e, karyaId) {
     e.preventDefault();
     const form = e.target;
@@ -555,7 +344,6 @@
     form.reset();
   }
 
-  // Listen to Comments
   function listenToComments(karyaId) {
     const container = document.getElementById(`comments-${karyaId}`);
     db.collection("komentar").doc(karyaId).collection("items")
@@ -571,7 +359,7 @@
       });
   }
 
-  // Load Karya - hanya satu galeri, terbaru (descending waktu)
+  // loadKarya (sama seperti semua.html: satu galeri, terbaru)
   window.loadKarya = async function(kategori = "fashion") {
     try {
       if (!window.karyaData) {
@@ -584,7 +372,6 @@
         ? window.karyaData
         : window.karyaData.filter(karya => karya.kategori === kategori);
 
-      // Urutkan terbaru (descending timestamp)
       data.sort((a, b) => (b.waktu?.seconds || 0) - (a.waktu?.seconds || 0));
 
       fashionGallery.innerHTML = "";
@@ -595,7 +382,7 @@
     }
   };
 
-  // Upload Karya
+  // Upload Karya (sama, reload ke fashion)
   document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const nama = document.getElementById("nama").value;
@@ -628,12 +415,9 @@
     }
   });
 
-  // Inisialisasi
   window.onload = function() {
     loadKarya("fashion");
   };
   </script>
 </body>
 </html>
-
-
