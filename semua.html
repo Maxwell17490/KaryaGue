@@ -465,26 +465,37 @@
     const karyaRef = db.collection("karya").doc(karyaId);
     const doc = await karyaRef.get();
     if (!doc.exists) return;
+
     const data = doc.data();
     let likedBy = data.likedBy || [];
     const hasLiked = likedBy.includes(userId);
+
+    // Toggle like/unlike
     if (hasLiked) {
-      likedBy = likedBy.filter(id => id !== userId);
+        likedBy = likedBy.filter(id => id !== userId);
     } else {
-      likedBy.push(userId);
+        likedBy.push(userId);
     }
+
+    // Update ke firestore
     await karyaRef.update({
-      likedBy,
-      likeCount: likedBy.length
+        likedBy,
+        likeCount: likedBy.length
     });
+
+    // Update tampilan tombol
     const likeElem = document.getElementById(`like-${karyaId}`);
     if (likeElem) {
-      likeElem.textContent = ` ${likedBy.length} Like`;
+        const emoji = hasLiked ? "♡" : "❤️";   // kalau tadi sudah like → jadi ♡ (kosong)
+        // Alternatif emoji: "💔" atau "🤍" untuk kondisi belum like
+        likeElem.textContent = `${emoji} ${likedBy.length}`;
     }
+
+    // Update data lokal (jika pakai state/window.karyaData)
     window.karyaData = window.karyaData.map(k =>
-      k.id === karyaId ? { ...k, likedBy, likeCount: likedBy.length } : k
+        k.id === karyaId ? { ...k, likedBy, likeCount: likedBy.length } : k
     );
-  }
+      }
 
   // Submit Comment (tetap sama)
   async function submitComment(e, karyaId) {
@@ -580,3 +591,4 @@
 </script>
 </body>
 </html>
+
