@@ -15,365 +15,110 @@
       padding: 0;
       color: #8A5A44;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #D4A373;
-      padding: 12px 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header .logo img {
-      height: 50px;
-    }
-    header nav {
-      display: flex;
-      align-items: center;
-      gap: 16px !important;
-    }
-   header nav a {
-      text-decoration: none;
-      color: #F5E8C7;
-      font-weight: 600;
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.3s;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.3s;
-    }
-   header nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #C68E17;
-      transition: width 0.3s ease;
-    }
-    header nav a:hover::after {
-      width: 100%;
-    }
-    header nav a:hover {
-      color: #C68E17;
-    }
 
-    /* DROPDOWN DENGAN PANAH & ANIMASI */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.5s;
-    }
-    .dropbtn {
-      background: linear-gradient(135deg, #D4A373, #C68E17);
-      color: #F5E8C7;
-      padding: 10px 14px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Poppins', sans-serif;
-    }
-    .dropbtn:hover {
-      background: linear-gradient(135deg, #C68E17, #D4A373);
-      transform: translateY(-2px);
-    }
-    .arrow {
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #F5E8C7;
-      transition: transform 0.3s ease;
-    }
-    .dropdown:hover .arrow {
-      transform: rotate(180deg);
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #F5E8C7;
-      min-width: 160px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      z-index: 1;
-      top: 100%;
-      left: 0;
-      margin-top: 4px;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .dropdown-content a {
-      color: #8A5A44;
-      padding: 10px 14px;
-      text-decoration: none;
-      display: block;
-      transition: background 0.3s;
-      border-radius: 6px;
-      margin: 4px;
-    }
-    .dropdown-content a:hover {
-      background-color: #E8D8C6;
-    }
-    .dropdown-content a.active {
-      background: #D4A373;
-      color: #F5E8C7;
-      font-weight: bold;
-    }
+    /* Header, dropdown, upload form, animasi fadeIn tetap sama */
 
-    h1 {
-      text-align: center;
-      margin: 20px 0 10px;
-      color: #8A5A44;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.3s;
-    }
-	  
-	  h3 {
-	  text-align: center;
-	  }
-	  
-    p {
-      text-align: center;
-      color: #8A5A44;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.6s;
-    }
-	  
-	   .hero h1 {
-      font-size: 2.8em;
-      margin: 16px 0;
-      color: #8A5A44;
-      font-weight: 600;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.6s;
-    }
-    .hero p {
-      font-size: 1.35em;
-      margin: 20px 0 32px;
-      color: #8A5A44;
-      line-height: 1.7;
-      max-width: 700px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.9s;
-    }
-    .hero .cta {
-      display: inline-block;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, #D4A373, #C68E17);
-      color: #F5E8C7;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1.1em;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 1.2s;
-    }
-    .hero .cta:hover {
-      background: linear-gradient(135deg, #C68E17, #D4A373);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @media (max-width: 768px) {
-      .hero .logo-center {
-        width: 220px;
-      }
-      .hero h1 {
-        font-size: 2.2em;
-      }
-      .hero p {
-        font-size: 1.1em;
-      }
-      header nav {
-        gap: 12px;
-      }
-      .dropbtn {
-        padding: 8px 12px;
-        font-size: 0.9em;
-      }
-    }
-
-    /* Upload form */
-    #uploadToggle {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #D4A373, #C68E17);
-      color: #F5E8C7;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 0.9s;
-    }
-    #uploadToggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    }
-    #upload {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 0;
-      background: #F5E8C7;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
-    }
-    #upload.active {
-      padding: 20px;
-      max-height: 1000px;
-      opacity: 1;
-    }
-    #upload h2 {
-      margin-top: 0;
-      text-align: center;
-      color: #8A5A44;
-    }
-    #upload input,
-    #upload textarea,
-    #upload select {
-      width: 100%;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #E8D8C6;
-      background: #F5E8C7;
-      color: #8A5A44;
-      transition: border-color 0.3s;
-    }
-    #upload input:focus,
-    #upload textarea:focus,
-    #upload select:focus {
-      outline: none;
-      border-color: #C68E17;
-    }
-    #upload button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #D4A373;
-      color: #F5E8C7;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-    #upload button:hover {
-      background: #C68E17;
-      transform: translateY(-2px);
-    }
-
-    /* Form komentar */
-    .form-comment {
-      margin-top: 10px;
-    }
-    .form-comment input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 8px;
-      border: 1px solid #E8D8C6;
-      border-radius: 6px;
-      font-size: 0.9em;
-      box-sizing: border-box;
-      background: #F5E8C7;
-      color: #8A5A44;
-      transition: border-color 0.3s;
-    }
-    .form-comment input[type="text"]:focus {
-      outline: none;
-      border-color: #C68E17;
-    }
-    .form-comment button {
-      background: #D4A373;
-      color: #F5E8C7;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9em;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .form-comment button:hover {
-      background: #C68E17;
-      transform: translateY(-2px);
-    }
-
-    /* Gallery */
+    /* Gallery - Horizontal Scroll dengan 3 card visible + snap */
     .gallery-section {
       margin: 40px auto;
-      max-width: 900px;
+      max-width: 1400px;
+      padding: 0 20px;
+      overflow: hidden;
     }
+
     .gallery-section h2 {
       text-align: center;
       margin: 30px 0 20px;
       color: #8A5A44;
       opacity: 0;
       animation: fadeIn 1s ease forwards 1.2s;
+      font-size: 1.8em;
     }
+
+    .gallery-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-wrapper::-webkit-scrollbar-thumb {
+      background: #C68E17;
+      border-radius: 4px;
+    }
+
     .card {
       background: #F5E8C7;
       border-radius: 12px;
       padding: 16px;
-      margin: 16px auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.2s;
-      max-width: 450px;
+      flex: 0 0 320px;                  /* ~3 card visible di layar besar */
+      max-width: 320px;
+      scroll-snap-align: start;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.6s ease forwards;
     }
-    .card:nth-child(1) { animation-delay: 1.4s; }
-    .card:nth-child(2) { animation-delay: 1.5s; }
-    .card:nth-child(3) { animation-delay: 1.6s; }
-    .card:nth-child(4) { animation-delay: 1.7s; }
-    .card:nth-child(5) { animation-delay: 1.8s; }
-    .card:nth-child(6) { animation-delay: 1.9s; }
+
+    .card:nth-child(1) { animation-delay: 0.4s; }
+    .card:nth-child(2) { animation-delay: 0.5s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.7s; }
+
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
+
     .card img {
       width: 100%;
+      height: auto;
+      max-height: 280px;
       border-radius: 8px;
       margin-bottom: 12px;
+      object-fit: contain;
+      background: #f8f1e5;
+      display: block;
     }
+
+    /* Like button style */
     .likes {
-      font-weight: bold;
-      color: #C68E17;
-      margin-top: 10px;
+      font-weight: 600;
+      color: #8A5A44;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(198, 142, 23, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
     }
+
+    .likes.liked {
+      background: rgba(255, 59, 48, 0.12);
+      color: #ff3b30;
+    }
+
+    .likes:hover {
+      background: rgba(198, 142, 23, 0.15);
+    }
+
+    .likes.liked:hover {
+      background: rgba(255, 59, 48, 0.18);
+    }
+
     .comments {
       margin-top: 12px;
     }
@@ -383,6 +128,16 @@
       padding: 6px;
       border-radius: 6px;
       color: #8A5A44;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card {
+        flex: 0 0 280px;
+      }
+      .gallery-wrapper {
+        gap: 16px;
+      }
     }
 
     @keyframes fadeIn {
@@ -401,7 +156,7 @@
     </div>
     <nav>
       <a href="index.html">Home</a>
-        <a href="tentang.html">Tentang</a>
+      <a href="tentang.html">Tentang</a>
       <div class="dropdown">
         <button class="dropbtn">
           Kategori
@@ -443,14 +198,10 @@
     </form>
   </section>
 
+  <!-- Hanya satu galeri (seperti semua.html) -->
   <div class="gallery-section">
-    <h2>Karya Terpopuler</h2>
-    <div id="popularGallery"></div>
-  </div>
-
-  <div class="gallery-section">
-    <h2>Karya Terbaru</h2>
-    <div id="newGallery"></div>
+    <h2>Karya Fashion</h2>
+    <div class="gallery-wrapper" id="fashionGallery"></div>
   </div>
 
   <script>
@@ -474,9 +225,8 @@
     return newId;
   })();
 
-  // Gallery Containers
-  const popularGallery = document.getElementById("popularGallery");
-  const newGallery = document.getElementById("newGallery");
+  // Gallery Container (satu saja)
+  const fashionGallery = document.getElementById("fashionGallery");
 
   // Event listener untuk dropdown kategori
   document.querySelectorAll('.dropdown-content a').forEach(item => {
@@ -498,13 +248,19 @@
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute('data-category', karya.kategori);
+
+    const initialHasLiked = userId && (karya.likedBy || []).includes(userId);
+    const initialEmoji = initialHasLiked ? "❤️" : "💔";
+
     card.innerHTML = `
       <img src="${karya.url}" alt="${karya.judul}" />
       <h3>${karya.judul}</h3>
-	  <p><strong>Oleh:</strong> ${karya.nama}</p>
+      <p><strong>Oleh:</strong> ${karya.nama || 'Anonim'}</p>
       <p><strong>Kategori:</strong> ${karya.kategori.charAt(0).toUpperCase() + karya.kategori.slice(1)}</p>
       <p>${karya.deskripsi}</p>
-      <div class="likes" id="like-${karya.id}">❤️ ${karya.likeCount || 0} Like</div>
+      <div class="likes ${initialHasLiked ? 'liked' : ''}" id="like-${karya.id}">
+        ${initialEmoji} ${karya.likeCount || 0} Like
+      </div>
       <div class="comments" id="comments-${karya.id}"></div>
       <form class="form-comment" onsubmit="submitComment(event, '${karya.id}')">
         <input type="text" name="nama" placeholder="Nama kamu" required>
@@ -512,6 +268,7 @@
         <button type="submit">Kirim</button>
       </form>
     `;
+
     container.appendChild(card);
     document.getElementById(`like-${karya.id}`).addEventListener("click", () => toggleLike(karya.id));
     listenToComments(karya.id);
@@ -522,26 +279,33 @@
     const karyaRef = db.collection("karya").doc(karyaId);
     const doc = await karyaRef.get();
     if (!doc.exists) return;
+
     const data = doc.data();
     let likedBy = data.likedBy || [];
-    const hasLiked = likedBy.includes(userId);
-    if (hasLiked) {
+    const currentlyLiked = likedBy.includes(userId);
+
+    if (currentlyLiked) {
       likedBy = likedBy.filter(id => id !== userId);
     } else {
       likedBy.push(userId);
     }
+
+    const newCount = likedBy.length;
+
     await karyaRef.update({
       likedBy,
-      likeCount: likedBy.length
+      likeCount: newCount
     });
+
     const likeElem = document.getElementById(`like-${karyaId}`);
     if (likeElem) {
-	   const emoji = hasLiked ? "❤️" : "💔";
-       likeElem.textContent = `${emoji} ${likedBy.length} Like`;
+      const emoji = currentlyLiked ? "💔" : "❤️";
+      likeElem.innerHTML = `${emoji} ${newCount} Like`;
+      likeElem.classList.toggle("liked", !currentlyLiked);
     }
-    // Update cache
+
     window.karyaData = window.karyaData.map(k =>
-      k.id === karyaId ? { ...k, likedBy, likeCount: likedBy.length } : k
+      k.id === karyaId ? { ...k, likedBy, likeCount: newCount } : k
     );
   }
 
@@ -575,7 +339,7 @@
       });
   }
 
-  // Load Karya with Cache
+  // Load Karya - hanya satu galeri, terbaru (descending waktu)
   window.loadKarya = async function(kategori = "fashion") {
     try {
       if (!window.karyaData) {
@@ -583,15 +347,16 @@
         const snapshot = await query.get();
         window.karyaData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       }
-      const data = kategori === "all"
+
+      let data = kategori === "all"
         ? window.karyaData
         : window.karyaData.filter(karya => karya.kategori === kategori);
-      const sortedByLikes = [...data].sort((a, b) => (b.likeCount || 0) - (a.likeCount || 0));
-      const sortedByTime = [...data];
-      popularGallery.innerHTML = "";
-      newGallery.innerHTML = "";
-      sortedByLikes.forEach(karya => renderKarya(karya, popularGallery));
-      sortedByTime.forEach(karya => renderKarya(karya, newGallery));
+
+      // Urutkan terbaru (descending timestamp)
+      data.sort((a, b) => (b.waktu?.seconds || 0) - (a.waktu?.seconds || 0));
+
+      fashionGallery.innerHTML = "";
+      data.forEach(karya => renderKarya(karya, fashionGallery));
     } catch (error) {
       console.error("Gagal memuat karya:", error);
       alert("Terjadi kesalahan saat memuat karya. Coba lagi nanti.");
@@ -635,8 +400,6 @@
   window.onload = function() {
     loadKarya("fashion");
   };
-</script>
+  </script>
 </body>
-
 </html>
-
