@@ -164,6 +164,20 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    
+body > h1:first-of-type,
+body > header:first-of-type,
+#site-title,
+.site-title,
+body > div[role="main"] > h1:first-child {
+  display: none !important;
+  font-size: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+    
   </style>
 </head>
 <body>
@@ -417,4 +431,3 @@
   </script>
 </body>
 </html>
-
