@@ -338,9 +338,8 @@
 .gallery-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;   
+  justify-content: center;
   gap: 24px;
-  padding: 20px 0;
 }
 
 .card {
@@ -461,15 +460,12 @@
     </form>
   </section>
 
-  <div class="gallery-section">
-    <h2>Karya Terpopuler</h2>
-    <div id="popularGallery"></div>
-  </div>
+	<div class="gallery-section">
+  <h2>Karya Parfum</h2>
+<div class="gallery-wrapper" id="parfumGallery"></div>
 
-  <div class="gallery-section">
-    <h2>Karya Terbaru</h2>
-    <div id="newGallery"></div>
-  </div>
+</div>
+
 
   <script>
   // Firebase Config
@@ -492,9 +488,7 @@
     return newId;
   })();
 
-  // Gallery Containers
-  const popularGallery = document.getElementById("popularGallery");
-  const newGallery = document.getElementById("newGallery");
+ 
 
   // Event listener untuk dropdown kategori
   document.querySelectorAll('.dropdown-content a').forEach(item => {
@@ -605,21 +599,19 @@
 
   // Load Karya with Cache
   window.loadKarya = async function(kategori = "parfum") {
-    try {
-      if (!window.karyaData) {
-        const query = db.collection("karya").orderBy("waktu", "desc");
-        const snapshot = await query.get();
-        window.karyaData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      }
-      const data = kategori === "all"
-        ? window.karyaData
-        : window.karyaData.filter(karya => karya.kategori === kategori);
-      const sortedByLikes = [...data].sort((a, b) => (b.likeCount || 0) - (a.likeCount || 0));
-      const sortedByTime = [...data];
-      popularGallery.innerHTML = "";
-      newGallery.innerHTML = "";
-      sortedByLikes.forEach(karya => renderKarya(karya, popularGallery));
-      sortedByTime.forEach(karya => renderKarya(karya, newGallery));
+  if (!window.karyaData) {
+    const snapshot = await db.collection("karya")
+      .orderBy("waktu", "desc")
+      .get();
+    window.karyaData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  }
+
+  const data = window.karyaData.filter(k => k.kategori === "parfum");
+
+  parfumGallery.innerHTML = "";
+  data.forEach(karya => renderKarya(karya, parfumGallery));
+};
+
     } catch (error) {
       console.error("Gagal memuat karya:", error);
       alert("Terjadi kesalahan saat memuat karya. Coba lagi nanti.");
@@ -667,5 +659,6 @@
 </body>
 
 </html>
+
 
 
