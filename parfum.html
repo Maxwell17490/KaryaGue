@@ -329,11 +329,30 @@
       transform: translateY(-2px);
     }
 
-    /* Gallery */
-    .gallery-section {
-      margin: 40px auto;
-      max-width: 900px;
-    }
+   .gallery-section {
+  margin: 40px auto;
+  max-width: 1400px;
+  padding: 0 20px;
+}
+
+.gallery-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.card {
+  background: #F5E8C7;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  flex: 0 0 300px;
+  max-width: 320px;
+}
+
     .gallery-section h2 {
       text-align: center;
       margin: 30px 0 20px;
@@ -341,18 +360,7 @@
       opacity: 0;
       animation: fadeIn 1s ease forwards 1.2s;
     }
-    .card {
-      background: #F5E8C7;
-      border-radius: 12px;
-      padding: 16px;
-      margin: 16px auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-      max-width: 450px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease forwards;
-    }
+    
     .card:nth-child(1) { animation-delay: 1.4s; }
     .card:nth-child(2) { animation-delay: 1.5s; }
     .card:nth-child(3) { animation-delay: 1.6s; }
@@ -367,12 +375,23 @@
       border-radius: 8px;
       margin-bottom: 12px;
     }
-    .likes {
-      font-weight: bold;
-      color: #C68E17;
-      margin-top: 10px;
-      cursor: pointer;
-    }
+   .likes {
+  font-weight: 600;
+  color: #8A5A44;
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(198, 142, 23, 0.08);
+  display: inline-flex;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.likes.liked {
+  background: rgba(255, 59, 48, 0.12);
+  color: #ff3b30;
+}
+
     .comments {
       margin-top: 12px;
     }
@@ -536,7 +555,7 @@
       });
       const likeElem = document.getElementById(`like-${karyaId}`);
     if (likeElem) {
-	   const emoji = hasLiked ? "❤️" : "💔";
+	  const emoji = hasLiked ? "💔" : "❤️";
        likeElem.textContent = `${emoji} ${likedBy.length} Like`;
 													}
       // Update cache
@@ -648,4 +667,5 @@
 </body>
 
 </html>
+
 
