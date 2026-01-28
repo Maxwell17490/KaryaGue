@@ -518,15 +518,17 @@
   const newCount = likedBy.length;
 
   await karyaRef.update({
-    likedBy,
-    likeCount: newCount
+   likedBy.includes(userId)
+
   });
 
   const likeElem = document.getElementById(`like-${karyaId}`);
   if (likeElem) {
-    const emoji = currentlyLiked ? "💔" : "❤️";  // toggle emoji
-    likeElem.innerHTML = `${emoji} ${newCount}`;
-    likeElem.classList.toggle("liked", !currentlyLiked);  // toggle class styling
+   const initialHasLiked = (karya.likedBy || []).includes(userId);
+const initialEmoji = initialHasLiked ? "❤️" : "💔";
+    const emoji = currentlyLiked ? "💔" : "❤️";
+likeElem.classList.toggle("liked", !currentlyLiked);
+
   }
 
   // Update cache lokal (opsional tapi penting agar konsisten)
@@ -629,6 +631,7 @@
 </script>
 </body>
 </html>
+
 
 
 
